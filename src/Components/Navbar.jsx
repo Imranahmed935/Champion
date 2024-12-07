@@ -1,13 +1,38 @@
 import React, { useContext } from 'react';
 import {Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Navbar = () => {
+    const {user, userLogOut} = useContext(AuthContext);
+    console.log(user)
     const links = <div className='sm:flex gap-4'>
         <NavLink to='/'><li>Home</li></NavLink>
         <NavLink to='/'><li>All Sports Equipment</li></NavLink>
         <NavLink to='/'><li>Add Equipment</li></NavLink>
         <NavLink to='/'><li>My Equipment List</li></NavLink>
     </div>
+
+    const handleSignOut = ()=>{
+      userLogOut()
+      .then(()=>{
+        Swal.fire({
+          title: 'success',
+          text: 'you have loggedOut successfully.',
+          icon: 'success',
+          confirmButtonText: 'ok'
+        })
+      })
+      .catch(error =>{
+        Swal.fire({
+          title: 'warning!',
+          text: error.message,
+          icon: 'error',
+          confirmButtonText: 'ok'
+        })
+      })
+
+    }
 
     
     return (
@@ -42,8 +67,14 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end gap-4">
-    <Link to={'/login'}>Login</Link>
-    <Link to={'/register'}>Register</Link>
+    {
+      user ? <button onClick={handleSignOut} className='btn btn-neutral'>LogOut</button>: 
+      <>
+      <Link to={'/login'}>Login</Link>
+      <Link to={'/register'}>Register</Link>
+      </>
+    }
+      
   </div>
 </div>
     );

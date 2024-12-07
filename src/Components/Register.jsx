@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../Provider/AuthProvider';
+import Swal from 'sweetalert2'
+import { updateProfile } from 'firebase/auth';
+import auth from '../firebase.config';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
+  const {createUser} = useContext(AuthContext)
 
     const handleRegister = (e)=>{
         e.preventDefault();
@@ -8,8 +14,52 @@ const Register = () => {
         const photo = e.target.photo.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
-        const registerData = {name, photo, email, password}
-        console.log(registerData)
+
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).+$/;
+
+         if (!passwordRegex.test(password)) {
+        Swal.fire({
+          title: 'warning!',
+          text: 'Password Must contain uppercase, and lowercase letters, and be at least 6 characters long.',
+          icon: 'error',
+          confirmButtonText: 'ok'
+        })
+        return;
+    }
+        createUser(email, password)
+        .then( (result) =>{
+          console.log(result.user)
+          Swal.fire({
+            title: 'success',
+            text: 'you have registered successfully.',
+            icon: 'success',
+            confirmButtonText: 'ok'
+          })
+          const data = {
+            displayName: name,
+            photoURL: photo,
+          }
+          updateProfile(auth.currentUser, data)
+          .then(()=>{
+            Swal.fire({
+              title: 'success',
+              text: 'you have updated successfully.',
+              icon: 'success',
+              confirmButtonText: 'ok'
+            })
+          })
+          .catch(error =>{
+            Swal.fire({
+              title: 'warning!',
+              text: error.message,
+              icon: 'error',
+              confirmButtonText: 'ok'
+            })
+          })
+        })
+        .catch(error=>{
+          console.log( 'hello',error)
+        })
     }
     return (
 <div className="bg-base-200 py-10">
@@ -46,6 +96,7 @@ const Register = () => {
         <div className="form-control mt-6">
           <button className="btn btn-primary">Register</button>
         </div>
+        <p>Already have an Account | <Link className='text-blue-600' to='/login'>login</Link></p>
       </form>
     </div>
   </div>
