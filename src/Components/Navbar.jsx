@@ -8,8 +8,8 @@ const Navbar = () => {
     console.log(user)
     const links = <div className='sm:flex gap-4'>
         <NavLink to='/'><li>Home</li></NavLink>
-        <NavLink to='/'><li>All Sports Equipment</li></NavLink>
-        <NavLink to='/'><li>Add Equipment</li></NavLink>
+        <NavLink to='/allEquipment'><li>All Sports Equipment</li></NavLink>
+        <NavLink to='/addEquipment'><li>Add Equipment</li></NavLink>
         <NavLink to='/'><li>My Equipment List</li></NavLink>
     </div>
 
