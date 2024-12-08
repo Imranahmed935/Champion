@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
 
+
 const AllEquipment = () => {
     const equipmentData = useLoaderData();
     const {loading} = useContext(AuthContext)

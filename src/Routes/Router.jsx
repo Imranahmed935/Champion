@@ -42,7 +42,7 @@ const router = createBrowserRouter([
                 loader:({params})=> fetch(`http://localhost:5000/addEquipment/${params.id}`)
             }
             ,{
-                path:'/myEquipment/:email',
+                path:'/myEquipment',
                 element:<MyEquipment></MyEquipment>,
                 loader: ({params})=> fetch(`http://localhost:5000/addEquipment/${params.email}`)
             }

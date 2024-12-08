@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 
 const Navbar = () => {
     const {user, loading, userLogOut} = useContext(AuthContext);
+    console.log(user)
 
     if(loading){
       return <>loading...</>
@@ -26,7 +27,7 @@ const Navbar = () => {
           isActive ? 'bg-purple-600 text-white' : 'text-gray-700 hover:bg-purple-100'
         }`
       }><li>Add Equipment</li></NavLink>
-        <NavLink to={`/myEquipment/:${user.email}`} className={({ isActive }) =>
+        <NavLink to={`/myEquipment`} className={({ isActive }) =>
         `px-4 py-2 rounded-lg transition ${
           isActive ? 'bg-purple-600 text-white' : 'text-gray-700 hover:bg-purple-100'
         }`
@@ -56,7 +57,7 @@ const Navbar = () => {
 
     
     return (
-<div className="navbar bg-base-100 lg:w-10/12 mx-auto">
+<div className="navbar bg-base-100 lg:w-7/12 mx-auto">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -88,7 +89,10 @@ const Navbar = () => {
   </div>
   <div className="navbar-end gap-4">
     {
-      user ? <button onClick={handleSignOut} className='btn btn-neutral'>LogOut</button>: 
+      user ? <>
+       <img src={user.photoURL} alt="" />
+      <button onClick={handleSignOut} className='btn btn-neutral'>LogOut</button>
+      </>: 
       <>
       <Link to={'/login'}>Login</Link>
       <Link to={'/register'}>Register</Link>
