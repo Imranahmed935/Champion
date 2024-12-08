@@ -9,6 +9,8 @@ import AllEquipment from "../Pages/AllEquipment";
 import VeiwDetails from "../Components/VeiwDetails";
 import MyEquipment from "../Pages/MyEquipment";
 import Update from "../Pages/Update";
+import AboutUs from "../Pages/AboutUs";
+import ContactUs from "../Pages/ContactUs";
 
 const router = createBrowserRouter([
     {
@@ -50,6 +52,14 @@ const router = createBrowserRouter([
             {
                 path:'/update',
                 element:<Update/>
+            },
+            {
+                path:'/aboutUs',
+                element:<AboutUs/>
+            },
+            {
+                path:'/contactUs',
+                element:<ContactUs/>
             }
         ]
     }

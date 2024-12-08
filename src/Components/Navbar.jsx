@@ -9,65 +9,85 @@ const Navbar = () => {
     const { user, userLogOut } = useContext(AuthContext);
 
     const links = (
-        <div className="sm:flex gap-4">
-            <NavLink
-                to="/"
-                className={({ isActive }) =>
-                    `px-4 py-2 rounded-lg transition ${
-                        isActive ? 'bg-purple-600 text-white' : 'text-gray-700 hover:bg-purple-100'
-                    }`
-                }
-            >
-                <li>Home</li>
-            </NavLink>
-            <NavLink
-                to="/allEquipment"
-                className={({ isActive }) =>
-                    `px-4 py-2 rounded-lg transition ${
-                        isActive ? 'bg-purple-600 text-white' : 'text-gray-700 hover:bg-purple-100'
-                    }`
-                }
-            >
-                <li>All Sports Equipment</li>
-            </NavLink>
-            <NavLink
-                to="/addEquipment"
-                className={({ isActive }) =>
-                    `px-4 py-2 rounded-lg transition ${
-                        isActive ? 'bg-purple-600 text-white' : 'text-gray-700 hover:bg-purple-100'
-                    }`
-                }
-            >
-                <li>Add Equipment</li>
-            </NavLink>
-            <NavLink
-                to={`/myEquipment`}
-                className={({ isActive }) =>
-                    `px-4 py-2 rounded-lg transition ${
-                        isActive ? 'bg-purple-600 text-white' : 'text-gray-700 hover:bg-purple-100'
-                    }`
-                }
-            >
-                <li>My Equipment List</li>
-            </NavLink>
-            <NavLink
-                to={`/update`}
-                className={({ isActive }) =>
-                    `px-4 py-2 rounded-lg transition ${
-                        isActive ? 'bg-purple-600 text-white' : 'text-gray-700 hover:bg-purple-100'
-                    }`
-                }
-            >
-                <li>Update List</li>
-            </NavLink>
-        </div>
+        <ul className="menu menu-vertical lg:menu-horizontal p-0">
+            <li>
+                <NavLink
+                    to="/"
+                    className={({ isActive }) =>
+                        isActive ? 'bg-purple-600 text-white rounded-lg' : 'text-gray-700 hover:bg-purple-100'
+                    }
+                >
+                    Home
+                </NavLink>
+            </li>
+            <li>
+                <NavLink
+                    to="/allEquipment"
+                    className={({ isActive }) =>
+                        isActive ? 'bg-purple-600 text-white rounded-lg' : 'text-gray-700 hover:bg-purple-100'
+                    }
+                >
+                    All Sports Equipment
+                </NavLink>
+            </li>
+            <li>
+                <NavLink
+                    to="/addEquipment"
+                    className={({ isActive }) =>
+                        isActive ? 'bg-purple-600 text-white rounded-lg' : 'text-gray-700 hover:bg-purple-100'
+                    }
+                >
+                    Add Equipment
+                </NavLink>
+            </li>
+            <li>
+                <NavLink
+                    to={`/myEquipment`}
+                    className={({ isActive }) =>
+                        isActive ? 'bg-purple-600 text-white rounded-lg' : 'text-gray-700 hover:bg-purple-100'
+                    }
+                >
+                    My Equipment List
+                </NavLink>
+            </li>
+            <li>
+                <NavLink
+                    to={`/update`}
+                    className={({ isActive }) =>
+                        isActive ? 'bg-purple-600 text-white rounded-lg' : 'text-gray-700 hover:bg-purple-100'
+                    }
+                >
+                    Update List
+                </NavLink>
+            </li>
+            <li>
+                <NavLink
+                    to={`/aboutUs`}
+                    className={({ isActive }) =>
+                        isActive ? 'bg-purple-600 text-white rounded-lg' : 'text-gray-700 hover:bg-purple-100'
+                    }
+                >
+                    About Us
+                </NavLink>
+            </li>
+            <li>
+                <NavLink
+                    to={`/ContactUs`}
+                    className={({ isActive }) =>
+                        isActive ? 'bg-purple-600 text-white rounded-lg' : 'text-gray-700 hover:bg-purple-100'
+                    }
+                >
+                    Contact Us
+                </NavLink>
+            </li>
+        </ul>
     );
 
     const handleSignOut = () => {
         userLogOut()
             .then(() => {
                 Swal.fire({
-                    title: 'success',
+                    title: 'Success',
                     text: 'You have logged out successfully.',
                     icon: 'success',
                     confirmButtonText: 'OK',
@@ -75,7 +95,7 @@ const Navbar = () => {
             })
             .catch((error) => {
                 Swal.fire({
-                    title: 'warning!',
+                    title: 'Warning!',
                     text: error.message,
                     icon: 'error',
                     confirmButtonText: 'OK',
@@ -84,10 +104,10 @@ const Navbar = () => {
     };
 
     return (
-        <div className="navbar bg-base-100 lg:w-11/12 mx-auto">
+        <div className="navbar bg-base-100 lg:w-9/12 mx-auto">
             <div className="navbar-start">
                 <div className="dropdown">
-                    <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+                    <label tabIndex={0} className="btn btn-ghost lg:hidden">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-5 w-5"
@@ -97,7 +117,7 @@ const Navbar = () => {
                         >
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
                         </svg>
-                    </div>
+                    </label>
                     <ul
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
@@ -108,7 +128,7 @@ const Navbar = () => {
                 <a className="btn btn-ghost text-xl">Champion's Choice</a>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">{links}</ul>
+                {links}
             </div>
             <div className="navbar-end gap-4">
                 {user ? (
@@ -117,12 +137,12 @@ const Navbar = () => {
                             className="w-10 h-10 rounded-full cursor-pointer"
                             src={user.photoURL}
                             alt="User Profile"
-                            id="profile-img" 
+                            id="profile-img"
                         />
                         <Tooltip
-                            anchorSelect="#profile-img" 
+                            anchorSelect="#profile-img"
                             place="bottom"
-                            content={user.displayName || 'Anonymous User'} 
+                            content={user.displayName || 'Anonymous User'}
                             className="bg-black text-white px-2 py-1 rounded"
                         />
                         <button onClick={handleSignOut} className="btn btn-neutral">
