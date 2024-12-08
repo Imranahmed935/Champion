@@ -1,13 +1,28 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
-import MyCard from '../Components/MyCard';
 
 const MyEquipment = () => {
   const { user } = useContext(AuthContext);
-  const equipment = useLoaderData(); 
+  const initialEquipment = useLoaderData(); 
+  const [equipment, setEquipment] = useState(initialEquipment);
+
   const filterEquipment = equipment.filter(equip => equip.email === user.email);
+
+  const handleDelete = (_id) => {
+    fetch(`http://localhost:5000/addEquipment/${_id}`, {
+      method: 'DELETE'
+    })
+    .then(res => res.json())
+    .then(data => {
+      if(data.deletedCount > 0){
+        alert('hello')
+      }
   
+      setEquipment(prevEquipment => prevEquipment.filter(equip => equip._id !== _id));
+    });
+  };
+
   return (
     <div>
       <h1 className="text-3xl font-bold text-center my-6">My Equipment</h1>
@@ -31,7 +46,7 @@ const MyEquipment = () => {
                 <p><strong>Time:</strong> {equip.time} days</p>
                 <div className="card-actions">
                   <button className="btn btn-primary">Edit</button>
-                  <button className="btn btn-primary">Delete</button>
+                  <button className="btn btn-primary" onClick={() => handleDelete(equip._id)}>Delete</button>
                 </div>
               </div>
             </div>
