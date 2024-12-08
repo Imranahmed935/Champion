@@ -50,16 +50,7 @@ const Navbar = () => {
                     My Equipment List
                 </NavLink>
             </li>
-            <li>
-                <NavLink
-                    to={`/update`}
-                    className={({ isActive }) =>
-                        isActive ? 'bg-purple-600 text-white rounded-lg' : 'text-gray-700 hover:bg-purple-100'
-                    }
-                >
-                    Update List
-                </NavLink>
-            </li>
+
             <li>
                 <NavLink
                     to={`/aboutUs`}

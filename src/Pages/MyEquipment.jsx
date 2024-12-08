@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 
@@ -63,7 +63,7 @@ const MyEquipment = () => {
                 <p><strong>Rating:</strong> {equip.rating}</p>
                 <p><strong>Time:</strong> {equip.time} days</p>
                 <div className="card-actions">
-                  <button className="btn btn-primary">Edit</button>
+                  <Link to={`/update/${equip._id}`}><button className="btn btn-primary">Edit</button></Link>
                   <button className="btn btn-primary" onClick={() => handleDelete(equip._id)}>Delete</button>
                 </div>
               </div>

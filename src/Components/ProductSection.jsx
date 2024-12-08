@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+
 
 const ProductSection = () => {
     const [products, setProducts] = useState([]);
-    const data = useLoaderData()
-    console.log(data)
-
     useEffect(() => {
         fetch('http://localhost:5000/addEquipment') 
             .then((response) => response.json())
@@ -32,7 +29,7 @@ const ProductSection = () => {
                         <p className="text-gray-600 mb-4">{product.description}</p>
                         <p className="text-lg font-bold text-purple-600">${product.price}</p>
                         <button className="mt-4 px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700">
-                            Buy Now
+                            view details
                         </button>
                     </div>
                 ))}
