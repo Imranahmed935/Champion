@@ -63,12 +63,12 @@ const Navbar = () => {
             </li>
             <li>
                 <NavLink
-                    to={`/ContactUs`}
+                    to={`/blog`}
                     className={({ isActive }) =>
                         isActive ? 'bg-purple-600 text-white rounded-lg' : 'text-gray-700 hover:bg-purple-100'
                     }
                 >
-                    Contact Us
+                    Blog
                 </NavLink>
             </li>
         </ul>

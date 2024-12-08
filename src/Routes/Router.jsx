@@ -10,7 +10,8 @@ import VeiwDetails from "../Components/VeiwDetails";
 import MyEquipment from "../Pages/MyEquipment";
 import Update from "../Pages/Update";
 import AboutUs from "../Pages/AboutUs";
-import ContactUs from "../Pages/ContactUs";
+import Blog from "../Pages/Blog";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
             },
             {
                 path:'/addEquipment',
-                element:<AddEquipment/>
+                element:<PrivateRoute><AddEquipment/></PrivateRoute>
             },
             {
                 path:'/allEquipment',
@@ -42,17 +43,17 @@ const router = createBrowserRouter([
             },
             {
                 path:'/addEquipment/:id',
-                element:<VeiwDetails/>,
+                element:<PrivateRoute><VeiwDetails/></PrivateRoute>,
                 loader:({params})=> fetch(`http://localhost:5000/addEquipment/${params.id}`)
             }
             ,{
                 path:'/myEquipment',
-                element:<MyEquipment></MyEquipment>,
+                element:<PrivateRoute><MyEquipment></MyEquipment></PrivateRoute>,
                 loader: ()=> fetch('http://localhost:5000/addEquipment')
             },
             {
                 path:'/update/:id',
-                element:<Update/>,
+                element:<PrivateRoute><Update/></PrivateRoute>,
                 loader: ({params}) => fetch(`http://localhost:5000/addEquipment/${params.id}`)
             },
             {
@@ -60,8 +61,8 @@ const router = createBrowserRouter([
                 element:<AboutUs/>
             },
             {
-                path:'/contactUs',
-                element:<ContactUs/>
+                path:'/blog',
+                element:<Blog/>
             }
         ]
     }
