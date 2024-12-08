@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const AllEquipment = () => {
     const equipmentData = useLoaderData();
-    // hello
+    const {loading} = useContext(AuthContext)
+
+    if(loading){
+        return <p>loading</p>
+    }
  
     return (
         <div>

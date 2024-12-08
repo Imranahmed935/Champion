@@ -7,6 +7,7 @@ import Register from "../Components/Register";
 import AddEquipment from "../Pages/AddEquipment";
 import AllEquipment from "../Pages/AllEquipment";
 import VeiwDetails from "../Components/VeiwDetails";
+import MyEquipment from "../Pages/MyEquipment";
 
 const router = createBrowserRouter([
     {
@@ -39,6 +40,11 @@ const router = createBrowserRouter([
                 path:'/allEquipment/:id',
                 element:<VeiwDetails/>,
                 loader:({params})=> fetch(`http://localhost:5000/addEquipment/${params.id}`)
+            }
+            ,{
+                path:'/myEquipment/:email',
+                element:<MyEquipment></MyEquipment>,
+                loader: ({params})=> fetch(`http://localhost:5000/addEquipment/${params.email}`)
             }
         ]
     }

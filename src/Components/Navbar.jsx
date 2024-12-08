@@ -4,13 +4,33 @@ import { AuthContext } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 
 const Navbar = () => {
-    const {user, userLogOut} = useContext(AuthContext);
-    console.log(user)
+    const {user, loading, userLogOut} = useContext(AuthContext);
+
+    if(loading){
+      return <>loading...</>
+    }
+  
     const links = <div className='sm:flex gap-4'>
-        <NavLink to='/'><li>Home</li></NavLink>
-        <NavLink to='/allEquipment'><li>All Sports Equipment</li></NavLink>
-        <NavLink to='/addEquipment'><li>Add Equipment</li></NavLink>
-        <NavLink to='/'><li>My Equipment List</li></NavLink>
+        <NavLink to='/' className={({ isActive }) =>
+        `px-4 py-2 rounded-lg transition ${
+          isActive ? 'bg-purple-600 text-white' : 'text-gray-700 hover:bg-purple-100'
+        }`
+      }><li>Home</li></NavLink>
+        <NavLink to='/allEquipment' className={({ isActive }) =>
+        `px-4 py-2 rounded-lg transition ${
+          isActive ? 'bg-purple-600 text-white' : 'text-gray-700 hover:bg-purple-100'
+        }`
+      }><li>All Sports Equipment</li></NavLink>
+        <NavLink to='/addEquipment' className={({ isActive }) =>
+        `px-4 py-2 rounded-lg transition ${
+          isActive ? 'bg-purple-600 text-white' : 'text-gray-700 hover:bg-purple-100'
+        }`
+      }><li>Add Equipment</li></NavLink>
+        <NavLink to={`/myEquipment/:${user.email}`} className={({ isActive }) =>
+        `px-4 py-2 rounded-lg transition ${
+          isActive ? 'bg-purple-600 text-white' : 'text-gray-700 hover:bg-purple-100'
+        }`
+      }><li>My Equipment List</li></NavLink>
     </div>
 
     const handleSignOut = ()=>{

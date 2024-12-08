@@ -3,7 +3,11 @@ import { AuthContext } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 
 const AddEquipment = () => {
-    const {user} = useContext(AuthContext)
+    const {user, loading} = useContext(AuthContext)
+
+    if(loading){
+      return <>loading...</>
+    }
 
     const handleEquipment =(e)=>{
         e.preventDefault()
