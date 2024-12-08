@@ -40,14 +40,14 @@ const router = createBrowserRouter([
                 loader:()=> fetch('http://localhost:5000/addEquipment')
             },
             {
-                path:'/allEquipment/:id',
+                path:'/addEquipment/:id',
                 element:<VeiwDetails/>,
                 loader:({params})=> fetch(`http://localhost:5000/addEquipment/${params.id}`)
             }
             ,{
                 path:'/myEquipment',
                 element:<MyEquipment></MyEquipment>,
-                loader: ({params})=> fetch(`http://localhost:5000/addEquipment/${params.email}`)
+                loader: ()=> fetch('http://localhost:5000/addEquipment')
             },
             {
                 path:'/update',

@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
 
 const ProductSection = () => {
     const [products, setProducts] = useState([]);
+    const data = useLoaderData()
+    console.log(data)
 
     useEffect(() => {
         fetch('http://localhost:5000/addEquipment') 
