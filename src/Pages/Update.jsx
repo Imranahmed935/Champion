@@ -1,57 +1,18 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
-import Swal from 'sweetalert2';
 
-const AddEquipment = () => {
-    const {user, loading} = useContext(AuthContext)
 
-    if(loading){
-      return <>loading...</>
-    }
-
-    const handleEquipment =(e)=>{
-        e.preventDefault()
-        const form = e.target;
-        const photo = form.photo.value;
-        const itemName = form.name.value;
-        const category = form.category.value;
-        const description = form.description.value;
-        const price = form.price.value;
-        const rating = form.rating.value;
-        const time = form.time.value;
-        const email = form.email.value;
-        const user = form.user.value;
-        const addEquipment = {photo, itemName, category, description, price, rating, time, email, user}
-
-       fetch('http://localhost:5000/addEquipment',{
-        method:'POST',
-        headers:{
-            "content-type":"application/json"
-        },
-        body: JSON.stringify(addEquipment)
-       })
-       .then(res => res.json())
-       .then(data =>{
-        if(data.insertedId){
-            Swal.fire({
-                title: 'success',
-                text: 'Equipment added successfully.',
-                icon: 'success',
-                confirmButtonText: 'ok'
-          })
-        }
-       })
-        
-    }
+const Update = () => {
+    const {user} = useContext(AuthContext)
     return (
-<div>
+ <div>
 <div className="bg-gray-100 py-10 min-h-screen">
   <div className="container mx-auto">
     <div className="text-center mb-4">
-      <h1 className="text-3xl font-bold">Add Equipment</h1>
+      <h1 className="text-3xl font-bold">Update Equipment</h1>
     </div>
     <div className="bg-white p-6 rounded shadow-md sm:w-3/4 mx-auto">
-      <form onSubmit={handleEquipment} className="grid grid-cols-2 gap-4">
+      <form className="grid grid-cols-2 gap-4">
         <div>
           <label className="label">Image URL</label>
           <input
@@ -134,30 +95,9 @@ const AddEquipment = () => {
             className="input input-bordered w-full"
           />
         </div>
-        <div>
-          <label className="label">User Email</label>
-          <input
-            type="email"
-            name='email'
-            defaultValue={user.email}
-            placeholder="User email"
-            readOnly
-            className="input input-bordered w-full bg-gray-100 cursor-not-allowed"
-          />
-        </div>
-        <div>
-          <label className="label">User Name</label>
-          <input
-            type="text"
-            placeholder="User name"
-            name='user'
-            defaultValue={user.displayName}
-            className="input input-bordered w-full bg-gray-100 cursor-not-allowed"
-          />
-        </div>
         <div className="col-span-2 text-center">
           <button type="submit" className="btn btn-primary">
-            Add Equipment
+           Update Equipment
           </button>
         </div>
       </form>
@@ -169,4 +109,4 @@ const AddEquipment = () => {
     );
 };
 
-export default AddEquipment;
+export default Update;

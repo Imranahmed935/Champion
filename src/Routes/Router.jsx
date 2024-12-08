@@ -8,6 +8,7 @@ import AddEquipment from "../Pages/AddEquipment";
 import AllEquipment from "../Pages/AllEquipment";
 import VeiwDetails from "../Components/VeiwDetails";
 import MyEquipment from "../Pages/MyEquipment";
+import Update from "../Pages/Update";
 
 const router = createBrowserRouter([
     {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
                 path:'/myEquipment',
                 element:<MyEquipment></MyEquipment>,
                 loader: ({params})=> fetch(`http://localhost:5000/addEquipment/${params.email}`)
+            },
+            {
+                path:'/update',
+                element:<Update/>
             }
         ]
     }

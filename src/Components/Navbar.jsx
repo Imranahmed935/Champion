@@ -6,12 +6,7 @@ import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
 
 const Navbar = () => {
-    const { user, loading, userLogOut } = useContext(AuthContext);
-    console.log(user);
-
-    if (loading) {
-        return <>loading...</>;
-    }
+    const { user, userLogOut } = useContext(AuthContext);
 
     const links = (
         <div className="sm:flex gap-4">
@@ -55,6 +50,16 @@ const Navbar = () => {
             >
                 <li>My Equipment List</li>
             </NavLink>
+            <NavLink
+                to={`/update`}
+                className={({ isActive }) =>
+                    `px-4 py-2 rounded-lg transition ${
+                        isActive ? 'bg-purple-600 text-white' : 'text-gray-700 hover:bg-purple-100'
+                    }`
+                }
+            >
+                <li>Update List</li>
+            </NavLink>
         </div>
     );
 
@@ -79,7 +84,7 @@ const Navbar = () => {
     };
 
     return (
-        <div className="navbar bg-base-100 lg:w-7/12 mx-auto">
+        <div className="navbar bg-base-100 lg:w-11/12 mx-auto">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
