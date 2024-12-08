@@ -20,11 +20,11 @@ const ProductSection = () => {
                         className="border border-gray-200 rounded-lg p-4 shadow-md"
                     >
                         <img
-                            src={product.image}
+                            src={product.imageURL}
                             alt={product.name}
                             className="w-full h-48 object-cover rounded-md mb-4"
                         />
-                        <h2 className="text-xl font-semibold mb-2">{product.name}</h2>
+                        <h2 className="text-xl font-semibold mb-2">{product.itemName}</h2>
                         <p className="text-gray-600 mb-4">{product.description}</p>
                         <p className="text-lg font-bold text-purple-600">${product.price}</p>
                         <button className="mt-4 px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700">
