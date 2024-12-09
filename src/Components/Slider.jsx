@@ -22,8 +22,8 @@ const Slider = () => {
     };
 
     return (
-        <div className="relative lg:w-10/12 mx-auto w-full h-80 sm:h-96 overflow-hidden">
-            <div className="absolute top-0 w-full bg-gradient-to-r from-blue-500 to-indigo-500 p-4 text-center text-white font-bold z-10">
+        <div className="relative  lg:w-10/12 mx-auto w-full h-80 sm:h-96 overflow-hidden">
+            <div className="absolute  -top-4 w-full bg-gradient-to-r from-blue-500 to-indigo-500 p-4 text-center text-white font-bold z-10">
                 <Slide direction="up" triggerOnce>
                     <h1 className="text-2xl">Welcome to the Sports Equipment Shop</h1>
                     <p>Find the best equipment for your favorite sports</p>

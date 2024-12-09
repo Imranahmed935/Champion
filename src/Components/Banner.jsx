@@ -21,33 +21,32 @@ const Banner = () => {
     }, [images.length]);
 
     return (
-        <div className="overflow-hidden relative mx-auto w-full lg:w-10/12">
-        <div className="relative w-full h-[500px] flex items-center justify-center">
-            {images.map((image, index) => (
-                <Slide
-                    key={index}
-                    direction="left"
-                    triggerOnce
-                    className={`absolute transition-opacity duration-1000 ${
-                        currentIndex === index ? "opacity-100" : "opacity-0"
-                    }`}
-                >
-                    <div className="relative w-full h-full flex flex-col items-center justify-center">
-                        <img
-                            src={image.src}
-                            alt={image.title}
-                            className="object-cover rounded-lg w-full h-[500px]"
-                        />
-                        <div className="absolute bottom-10 text-center bg-black bg-opacity-50 px-4 py-2 rounded-md max-w-[90%] mx-auto">
-                            <h2 className="text-3xl font-semibold text-white">{image.title}</h2>
-                            <p className="text-white text-lg">{image.description}</p>
+        <div className="relative w-full lg:w-10/12 py-4 mx-auto overflow-hidden px-2">
+            <div className="relative w-full h-[600px]">
+                {images.map((image, index) => (
+                    <Slide
+                        key={index}
+                        direction="left"
+                        triggerOnce
+                        className={`absolute w-full transition-opacity duration-1000 ${
+                            currentIndex === index ? "opacity-100" : "opacity-0"
+                        }`}
+                    >
+                        <div className="relative w-full h-full flex flex-col items-center justify-center">
+                            <img
+                                src={image.src}
+                                alt={image.title}
+                                className="object-cover w-full h-[600px]"
+                            />
+                            <div className="absolute bottom-10 text-center bg-black bg-opacity-50 px-4 py-2 rounded-md max-w-[90%] mx-auto">
+                                <h2 className="text-3xl font-semibold text-white">{image.title}</h2>
+                                <p className="text-white text-lg">{image.description}</p>
+                            </div>
                         </div>
-                    </div>
-                </Slide>
-            ))}
+                    </Slide>
+                ))}
+            </div>
         </div>
-    </div>
-    
     );
 };
 

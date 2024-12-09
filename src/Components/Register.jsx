@@ -3,10 +3,11 @@ import { AuthContext } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2'
 import { updateProfile } from 'firebase/auth';
 import auth from '../firebase.config';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const {createUser} = useContext(AuthContext)
+  const navigate = useNavigate();
 
     const handleRegister = (e)=>{
         e.preventDefault();
@@ -24,6 +25,7 @@ const Register = () => {
           icon: 'error',
           confirmButtonText: 'ok'
         })
+  
         return;
     }
         createUser(email, password)
@@ -35,6 +37,8 @@ const Register = () => {
             icon: 'success',
             confirmButtonText: 'ok'
           })
+          navigate('/');
+
           const data = {
             displayName: name,
             photoURL: photo,
@@ -67,7 +71,7 @@ const Register = () => {
     <div className="text-center mb-4">
       <h1 className="text-5xl font-bold">Register Here!</h1>
     </div>
-    <div className="card bg-base-100 w-4/12 mx-auto shrink-0 shadow-2xl">
+    <div className="card bg-base-100 lg:w-4/12 mx-auto shrink-0 shadow-2xl">
       <form onSubmit={handleRegister} className="card-body">
         <div className="form-control">
           <label className="label">

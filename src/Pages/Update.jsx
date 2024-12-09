@@ -1,11 +1,11 @@
 import React, { useState} from 'react';
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import { useLoaderData, } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const Update = () => {
   const equipment = useLoaderData(); 
+  console.log(equipment)
   const [formData, setFormData] = useState(equipment);
-  const navigate = useNavigate();
 
 
   const handleChange = (e) => {
@@ -63,7 +63,7 @@ const Update = () => {
               <label className="label">Item Name</label>
               <input
                 type="text"
-                name="name"
+                name="itemName"
                 value={formData.itemName}
                 onChange={handleChange}
                 className="input input-bordered w-full"

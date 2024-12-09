@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 const ProductSection = () => {
@@ -28,9 +29,11 @@ const ProductSection = () => {
                         <h2 className="text-xl font-semibold mb-2">{product.itemName}</h2>
                         <p className="text-gray-600 mb-4">{product.description}</p>
                         <p className="text-lg font-bold text-purple-600">${product.price}</p>
+                        <Link to={`/addEquipment/${product._id}`}>
                         <button className="mt-4 px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700">
                             view details
                         </button>
+                        </Link>
                     </div>
                 ))}
             </div>

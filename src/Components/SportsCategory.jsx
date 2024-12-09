@@ -6,6 +6,7 @@ import pic4  from'../assets/bat.jpg'
 import pic5  from'../assets/bat1.jpg'
 import pic6  from'../assets/boot-2.jpg'
 import pic7  from'../assets/boot.jpg'
+import pic8  from'../assets/boot.jpg'
 
 const SportsCategory = () => {
     return (
@@ -18,6 +19,7 @@ const SportsCategory = () => {
                 <img className='w-80 h-52' src={pic1} alt="" />
                 <img className='w-80 h-52' src={pic2} alt="" />
                 <img className='w-80 h-52' src={pic3} alt="" />
+                <img className='w-80 h-52' src={pic8} alt="" />
                 </div>
             </div>
             <div className='sm:w-10/12 mx-auto py-10'>

@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2'
-import { Link, Navigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate} from 'react-router-dom';
 
 const Login = () => {
   const {loginUser, loginWithGoogle} = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
   const handleLogin = (e)=>{
     e.preventDefault();
     const email = e.target.email.value;
@@ -18,6 +20,7 @@ const Login = () => {
         icon: 'success',
         confirmButtonText: 'ok'
       })
+      navigate(location.state ? location.state : '/');
     })
     .catch(error =>{
       console.log('hello',error)
@@ -34,6 +37,7 @@ const Login = () => {
         icon: 'success',
         confirmButtonText: 'ok'
       })
+      navigate(location.state ? location.state : '/');
     })
     .catch(error =>{
       Swal.fire({
@@ -50,7 +54,7 @@ const Login = () => {
     <div className="text-center mb-4">
       <h1 className="text-5xl font-bold">Login Here!</h1>
     </div>
-    <div className="card bg-base-100 w-4/12 mx-auto shrink-0 shadow-2xl">
+    <div className="card bg-base-100 lg:w-4/12 mx-auto shrink-0 shadow-2xl">
       <form onSubmit={handleLogin} className="card-body">
         <div className="form-control">
           <label className="label">
