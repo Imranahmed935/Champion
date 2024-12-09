@@ -30,7 +30,6 @@ const Login = () => {
   const handleGoogle = ()=>{
     loginWithGoogle()
     .then(result =>{
-      console.log(result.user)
       Swal.fire({
         title: 'success',
         text: 'you have loggedIn by google successfully.',

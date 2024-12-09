@@ -4,7 +4,6 @@ import Swal from 'sweetalert2';
 
 const Update = () => {
   const equipment = useLoaderData(); 
-  console.log(equipment)
   const [formData, setFormData] = useState(equipment);
 
 
