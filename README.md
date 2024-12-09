@@ -1,8 +1,26 @@
-# React + Vite
+```markdown
+# Champion's Choice
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live Site URL: [Visit Champion's Choice](https://example.com)
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features:
+
+- **Comprehensive Player Profiles**: View detailed statistics and achievements of top players.
+- **Team Building Tools**: Customize and manage your dream team with ease.
+- **Live Match Insights**: Stay updated with live match scores and highlights.
+- **Community Engagement**: Connect with other enthusiasts through forums and discussions.
+- **Mobile Optimization**: Enjoy a seamless experience across all devices.
+
+---
+
+### Technologies Used:
+
+- HTML5, CSS3, JavaScript
+- React.js
+- Node.js & Express.js (Backend)
+- MongoDB (Database)
+- Tailwind CSS
+
+
