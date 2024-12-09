@@ -19,7 +19,7 @@ const Update = () => {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:5000/addEquipment/${equipment._id}`, {
+    fetch(`https://champion-choice-server.vercel.app/addEquipment/${equipment._id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

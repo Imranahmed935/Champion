@@ -39,22 +39,22 @@ const router = createBrowserRouter([
             {
                 path:'/allEquipment',
                 element:<AllEquipment/>,
-                loader:()=> fetch('http://localhost:5000/addEquipment')
+                loader:()=> fetch('https://champion-choice-server.vercel.app/addEquipment')
             },
             {
-                path:'/addEquipment/:id',
+                path:'/details/:id',
                 element:<PrivateRoute><VeiwDetails/></PrivateRoute>,
-                loader:({params})=> fetch(`http://localhost:5000/addEquipment/${params.id}`)
+                loader:({params})=> fetch(`https://champion-choice-server.vercel.app/addEquipment/${params.id}`)
             }
             ,{
                 path:'/myEquipment',
                 element:<PrivateRoute><MyEquipment></MyEquipment></PrivateRoute>,
-                loader: ()=> fetch('http://localhost:5000/addEquipment')
+                loader: ()=> fetch('https://champion-choice-server.vercel.app/addEquipment')
             },
             {
                 path:'/update/:id',
                 element:<PrivateRoute><Update/></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/addEquipment/${params.id}`)
+                loader: ({params}) => fetch(`https://champion-choice-server.vercel.app/addEquipment/${params.id}`)
             },
             {
                 path:'/aboutUs',

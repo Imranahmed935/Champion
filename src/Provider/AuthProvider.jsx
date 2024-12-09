@@ -6,6 +6,7 @@ import auth from "../firebase.config";
 export const AuthContext = createContext();
 
 const AuthProvider = ({children}) => {
+    const [darkMode, setDarkMode] = useState(false);
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
 
@@ -41,6 +42,7 @@ const AuthProvider = ({children}) => {
         }
     },[])
 
+
     const authInfo = {
         user,
         setLoading,
@@ -48,7 +50,9 @@ const AuthProvider = ({children}) => {
         userLogOut,
         createUser,
         loginUser,
-        loginWithGoogle
+        loginWithGoogle,
+        darkMode,
+        setDarkMode
     }
     return (
         <AuthContext.Provider value={authInfo}>

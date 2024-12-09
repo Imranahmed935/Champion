@@ -1,12 +1,23 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { Tooltip } from 'react-tooltip'; 
 import 'react-tooltip/dist/react-tooltip.css';
+import { FaSun, FaMoon } from 'react-icons/fa';
 
 const Navbar = () => {
-    const { user, userLogOut } = useContext(AuthContext);
+    const { user, userLogOut, darkMode, setDarkMode } = useContext(AuthContext);
+    
+
+    const toggleDarkMode = () => {
+        setDarkMode(!darkMode);
+        if (!darkMode) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    };
 
     const links = (
         <ul className="menu menu-vertical lg:menu-horizontal p-0">
@@ -14,7 +25,7 @@ const Navbar = () => {
                 <NavLink
                     to="/"
                     className={({ isActive }) =>
-                        isActive ? 'bg-purple-600 text-white rounded-lg' : 'text-gray-700 hover:bg-purple-100'
+                        isActive ? 'bg-purple-600 text-white rounded-lg' : 'text-gray-200 hover:bg-purple-500'
                     }
                 >
                     Home
@@ -24,7 +35,7 @@ const Navbar = () => {
                 <NavLink
                     to="/allEquipment"
                     className={({ isActive }) =>
-                        isActive ? 'bg-purple-600 text-white rounded-lg' : 'text-gray-700 hover:bg-purple-100'
+                        isActive ? 'bg-purple-600 text-white rounded-lg' : 'text-gray-200 hover:bg-purple-500'
                     }
                 >
                     All Sports Equipment
@@ -34,7 +45,7 @@ const Navbar = () => {
                 <NavLink
                     to="/addEquipment"
                     className={({ isActive }) =>
-                        isActive ? 'bg-purple-600 text-white rounded-lg' : 'text-gray-700 hover:bg-purple-100'
+                        isActive ? 'bg-purple-600 text-white rounded-lg' : 'text-gray-200 hover:bg-purple-500'
                     }
                 >
                     Add Equipment
@@ -44,18 +55,17 @@ const Navbar = () => {
                 <NavLink
                     to={`/myEquipment`}
                     className={({ isActive }) =>
-                        isActive ? 'bg-purple-600 text-white rounded-lg' : 'text-gray-700 hover:bg-purple-100'
+                        isActive ? 'bg-purple-600 text-white rounded-lg' : 'text-gray-200 hover:bg-purple-500'
                     }
                 >
                     My Equipment List
                 </NavLink>
             </li>
-
             <li>
                 <NavLink
                     to={`/aboutUs`}
                     className={({ isActive }) =>
-                        isActive ? 'bg-purple-600 text-white rounded-lg' : 'text-gray-700 hover:bg-purple-100'
+                        isActive ? 'bg-purple-600 text-white rounded-lg' : 'text-gray-200 hover:bg-purple-500'
                     }
                 >
                     About Us
@@ -65,7 +75,7 @@ const Navbar = () => {
                 <NavLink
                     to={`/blog`}
                     className={({ isActive }) =>
-                        isActive ? 'bg-purple-600 text-white rounded-lg' : 'text-gray-700 hover:bg-purple-100'
+                        isActive ? 'bg-purple-600 text-white rounded-lg' : 'text-gray-200 hover:bg-purple-500'
                     }
                 >
                     Blog
@@ -95,10 +105,10 @@ const Navbar = () => {
     };
 
     return (
-        <div className="navbar bg-base-100 lg:w-9/12 mx-auto">
+        <div className="navbar lg:w-9/12 mx-auto bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 text-white shadow-lg">
             <div className="navbar-start">
                 <div className="dropdown">
-                    <label tabIndex={0} className="btn btn-ghost lg:hidden">
+                    <label tabIndex={0} className="btn btn-ghost lg:hidden text-white">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-5 w-5"
@@ -111,17 +121,24 @@ const Navbar = () => {
                     </label>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                        className="menu menu-sm dropdown-content bg-gradient-to-r from-purple-700 via-pink-600 to-red-600 text-white rounded-box z-[1] mt-3 w-52 p-2 shadow"
                     >
                         {links}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">Champion's Choice</a>
+                <a className="btn btn-ghost text-xl text-white">Champion's Choice</a>
             </div>
-            <div className="navbar-center hidden lg:flex">
-                {links}
-            </div>
+            <div className="navbar-center hidden lg:flex">{links}</div>
             <div className="navbar-end gap-4">
+               
+                <button
+                    onClick={toggleDarkMode}
+                    className="btn btn-neutral flex items-center gap-2 text-white"
+                >
+                    {darkMode ? <FaSun /> : <FaMoon />}
+                    {darkMode ? 'Light Mode' : 'Dark Mode'}
+                </button>
+
                 {user ? (
                     <>
                         <img
@@ -142,8 +159,8 @@ const Navbar = () => {
                     </>
                 ) : (
                     <>
-                        <Link to={'/login'}>Login</Link>
-                        <Link to={'/register'}>Register</Link>
+                        <Link to={'/login'} className="btn btn-sm ">Login</Link>
+                        <Link to={'/register'} className="btn btn-sm">Register</Link>
                     </>
                 )}
             </div>

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const ProductSection = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/addEquipment') 
+        fetch('https://champion-choice-server.vercel.app/equipment') 
             .then((response) => response.json())
             .then((data) => setProducts(data))
             .catch((error) => console.error('Error fetching products:', error));
@@ -29,7 +29,7 @@ const ProductSection = () => {
                         <h2 className="text-xl font-semibold mb-2">{product.itemName}</h2>
                         <p className="text-gray-600 mb-4">{product.description}</p>
                         <p className="text-lg font-bold text-purple-600">${product.price}</p>
-                        <Link to={`/addEquipment/${product._id}`}>
+                        <Link to={`/details/${product._id}`}>
                         <button className="mt-4 px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700">
                             view details
                         </button>

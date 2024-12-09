@@ -21,7 +21,7 @@ const Banner = () => {
     }, [images.length]);
 
     return (
-        <div className="relative w-full lg:w-10/12 py-4 mx-auto overflow-hidden px-2">
+        <div className="relative w-full lg:w-9/12 py-4 mx-auto overflow-hidden px-2">
             <div className="relative w-full h-[600px]">
                 {images.map((image, index) => (
                     <Slide

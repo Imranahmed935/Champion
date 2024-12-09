@@ -23,7 +23,7 @@ const AddEquipment = () => {
         const user = form.user.value;
         const addEquipment = {photo, itemName, category, description, price, rating, time, email, user}
 
-       fetch('http://localhost:5000/addEquipment',{
+       fetch('https://champion-choice-server.vercel.app/addEquipment',{
         method:'POST',
         headers:{
             "content-type":"application/json"

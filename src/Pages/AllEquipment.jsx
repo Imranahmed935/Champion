@@ -53,7 +53,7 @@ const AllEquipment = () => {
                             <td>{data.category}</td>
                             <td>${data.price}</td>
                             <td>
-                                <Link to={`/addEquipment/${data._id}`}>
+                                <Link to={`/details/${data._id}`}>
                                     <button className='btn btn-primary rounded-none'>
                                         View Details
                                     </button>

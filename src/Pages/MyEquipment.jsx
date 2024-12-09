@@ -22,7 +22,7 @@ const MyEquipment = () => {
     }).then((result) => {
       if (result.isConfirmed) {
 
-        fetch(`http://localhost:5000/addEquipment/${_id}`, {
+        fetch(`https://champion-choice-server.vercel.app/addEquipment/${_id}`, {
           method: 'DELETE'
         })
         .then(res => res.json())
