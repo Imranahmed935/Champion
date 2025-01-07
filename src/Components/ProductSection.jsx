@@ -6,7 +6,7 @@ const ProductSection = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/equipment")
+    fetch("https://champion-choice-server.vercel.app/equipment")
       .then((response) => response.json())
       .then((data) => setProducts(data))
       .catch((error) => console.error("Error fetching products:", error));
@@ -16,7 +16,7 @@ const ProductSection = () => {
     <div className="bg-[#e3e6e6]">
         <div className="lg:w-9/12 mx-auto px-4  ">
       <h1 className="text-2xl font-semibold py-4">Best Sellers in Sports</h1>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {products.map((product) => (
           <div
             key={product._id}

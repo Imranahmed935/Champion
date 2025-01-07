@@ -1,23 +1,13 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
-import { FaSun, FaMoon, FaCartArrowDown } from "react-icons/fa";
-import { FaCartFlatbed } from "react-icons/fa6";
+import { FaCartArrowDown } from "react-icons/fa";
 
 const Navbar = () => {
-  const { user, userLogOut, darkMode, setDarkMode } = useContext(AuthContext);
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    if (!darkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  };
+  const { user, userLogOut } = useContext(AuthContext);
 
   const links = (
     <ul className="menu menu-vertical lg:menu-horizontal p-0">
@@ -41,26 +31,30 @@ const Navbar = () => {
           All Sports Equipment
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          to="/addEquipment"
-          className={({ isActive }) =>
-            isActive ? "underline" : "text-gray-200"
-          }
-        >
-          Add Equipment
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to={`/myEquipment`}
-          className={({ isActive }) =>
-            isActive ? "underline" : "text-gray-200"
-          }
-        >
-          My Equipment List
-        </NavLink>
-      </li>
+      {user && (
+        <>
+          <li>
+            <NavLink
+              to="/addEquipment"
+              className={({ isActive }) =>
+                isActive ? "underline" : "text-gray-200"
+              }
+            >
+              Add Equipment
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to={`/myEquipment`}
+              className={({ isActive }) =>
+                isActive ? "underline" : "text-gray-200"
+              }
+            >
+              My Equipment List
+            </NavLink>
+          </li>
+        </>
+      )}
       <li>
         <NavLink
           to={`/aboutUs`}
@@ -105,7 +99,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-purple-600 ">
+    <div className="bg-purple-600">
       <div className="navbar lg:w-9/12 mx-auto text-white">
         <div className="navbar-start">
           <div className="dropdown">
@@ -136,7 +130,6 @@ const Navbar = () => {
         </div>
         <div className="navbar-center hidden lg:flex">{links}</div>
         <div className="navbar-end gap-4">
-
           {user ? (
             <>
               <li>
@@ -148,7 +141,9 @@ const Navbar = () => {
                 >
                   <button className="flex -mt-4">
                     <FaCartArrowDown className="text-2xl" />
-                    <div className="badge badge-secondary absolute top-1">+0</div>
+                    <div className="badge badge-secondary absolute top-1">
+                      +0
+                    </div>
                   </button>
                 </NavLink>
               </li>

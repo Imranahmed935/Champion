@@ -39,11 +39,10 @@ const router = createBrowserRouter([
             {
                 path:'/allEquipment',
                 element:<AllEquipment/>,
-                loader:()=> fetch('https://champion-choice-server.vercel.app/addEquipment')
             },
             {
                 path:'/details/:id',
-                element:<PrivateRoute><VeiwDetails/></PrivateRoute>,
+                element:<VeiwDetails/>,
                 loader:({params})=> fetch(`https://champion-choice-server.vercel.app/addEquipment/${params.id}`)
             }
             ,{

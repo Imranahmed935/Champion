@@ -13,8 +13,8 @@ const Offer = () => {
   if (!showOffer) return null;
 
   return (
-    <div className='bg-[#e3e6e6] py-4'>
-        <div className="relative lg:w-9/12 w-full mt-2 rounded-xl px-2 mx-auto bg-red-500 py-4 overflow-hidden">
+    <div className='bg-[#e3e6e6] py-4 px-2'>
+        <div className="relative lg:w-9/12 w-full mt-2 px-2 rounded-xl mx-auto bg-red-500 py-4 overflow-hidden">
       {/* Close Button */}
       <button
         onClick={handleClose}

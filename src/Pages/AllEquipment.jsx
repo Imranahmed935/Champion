@@ -16,7 +16,7 @@ const AllEquipment = () => {
 
   useEffect(() => {
     fetch(
-      `http://localhost:5000/addEquipment?search=${Search}&page=${currentPage}&size=${itemsPages}`
+      `https://champion-choice-server.vercel.app/addEquipment?search=${Search}&page=${currentPage}&size=${itemsPages}`
     )
       .then((response) => response.json())
       .then((data) => {

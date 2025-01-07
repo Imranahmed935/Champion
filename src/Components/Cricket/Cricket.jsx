@@ -12,10 +12,33 @@ const Cricket = () => {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 3,
+    responsive: [
+      {
+        breakpoint: 1024, 
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 480, 
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+    ],
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/equipment/cricket")
+    fetch("https://champion-choice-server.vercel.app/equipment/cricket")
       .then((response) => response.json())
       .then((data) => setFootballData(data))
       .catch((error) => console.error("Error fetching football data:", error));

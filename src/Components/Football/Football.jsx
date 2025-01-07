@@ -12,10 +12,33 @@ const Football = () => {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 3,
+    responsive: [
+      {
+        breakpoint: 1024, 
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 480, 
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+    ],
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/equipment/football")
+    fetch("https://champion-choice-server.vercel.app/equipment/football")
       .then((response) => response.json())
       .then((data) => setFootballData(data))
       .catch((error) => console.error("Error fetching football data:", error));
@@ -23,10 +46,8 @@ const Football = () => {
 
   return (
     <div className="bg-[#e3e6e6]">
-      <div className="lg:w-9/12 mx-auto px-4 ">
+      <div className="lg:w-9/12 mx-auto px-4">
         <h1 className="text-2xl font-semibold py-4">Football Accessories</h1>
-
-        {/* Grid container for displaying products */}
 
         <div className="">
           <Slider {...settings}>
@@ -48,7 +69,6 @@ const Football = () => {
                       />
                     ))
                   ) : (
-                    /* Fallback to single image or placeholder */
                     <img
                       src={product.photo || "/placeholder.jpg"}
                       alt={product.itemName}
@@ -57,7 +77,6 @@ const Football = () => {
                   )}
                 </div>
 
-                {/* Product details */}
                 <div className="p-4">
                   <h2 className="text-lg font-semibold truncate mb-2">
                     {product.itemName}
