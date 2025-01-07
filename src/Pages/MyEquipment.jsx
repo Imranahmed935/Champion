@@ -1,15 +1,20 @@
-import React, { useContext, useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { FaEdit, FaTrash } from "react-icons/fa";
 
 const MyEquipment = () => {
   const { user } = useContext(AuthContext);
-  const initialEquipment = useLoaderData();
-  const [equipment, setEquipment] = useState(initialEquipment);
-
-  const filterEquipment = equipment.filter((equip) => equip.email === user.email);
+  const [equipment, setEquipment] = useState([]);
+  useEffect(() => {
+    fetch(`https://champion-choice-server.vercel.app/myEquipment/${user?.email}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setEquipment(data);
+      })
+      .catch((error) => console.error("Error fetching equipment data:", error));
+  }, [user]);
 
   const handleDelete = (_id) => {
     Swal.fire({
@@ -28,8 +33,14 @@ const MyEquipment = () => {
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
-              setEquipment((prevEquipment) => prevEquipment.filter((equip) => equip._id !== _id));
-              Swal.fire("Deleted!", "Your equipment has been deleted.", "success");
+              setEquipment((prevEquipment) =>
+                prevEquipment.filter((equip) => equip._id !== _id)
+              );
+              Swal.fire(
+                "Deleted!",
+                "Your equipment has been deleted.",
+                "success"
+              );
             }
           });
       }
@@ -37,11 +48,16 @@ const MyEquipment = () => {
   };
 
   return (
-    <div className="pb-24">
-      <h1 className="lg:w-9/12 mx-auto text-2xl font-semibold py-6">My Equipment</h1>
+    <div className="pb-24 min-h-screen">
+      <h1 className="lg:w-9/12 mx-auto text-2xl font-semibold py-6">
+        My Equipment
+      </h1>
       <div className="lg:w-9/12 px-2 mx-auto w-full py- grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {filterEquipment.map((equip) => (
-          <div key={equip._id} className="bg-white overflow-hidden hover:shadow-lg transition-shadow">
+        {equipment.map((equip) => (
+          <div
+            key={equip._id}
+            className="bg-white overflow-hidden hover:shadow-lg transition-shadow"
+          >
             <figure>
               <img
                 className="w-full h-52 object-cover"
@@ -50,7 +66,9 @@ const MyEquipment = () => {
               />
             </figure>
             <div className="p-4 space-y-2">
-              <h2 className="text-lg font-semibold text-gray-800">{equip.itemName}</h2>
+              <h2 className="text-lg font-semibold text-gray-800">
+                {equip.itemName}
+              </h2>
               <p className="text-sm text-gray-600">
                 <strong>Category:</strong> {equip.category}
               </p>

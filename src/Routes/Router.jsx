@@ -48,7 +48,6 @@ const router = createBrowserRouter([
             ,{
                 path:'/myEquipment',
                 element:<PrivateRoute><MyEquipment></MyEquipment></PrivateRoute>,
-                loader: ()=> fetch('https://champion-choice-server.vercel.app/addEquipment')
             },
             {
                 path:'/update/:id',
