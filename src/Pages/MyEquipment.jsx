@@ -1,14 +1,15 @@
-import React, { useContext, useState } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
-import { AuthContext } from '../Provider/AuthProvider';
-import Swal from 'sweetalert2';
+import React, { useContext, useState } from "react";
+import { Link, useLoaderData } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
+import Swal from "sweetalert2";
+import { FaEdit, FaTrash } from "react-icons/fa";
 
 const MyEquipment = () => {
   const { user } = useContext(AuthContext);
-  const initialEquipment = useLoaderData(); 
+  const initialEquipment = useLoaderData();
   const [equipment, setEquipment] = useState(initialEquipment);
 
-  const filterEquipment = equipment.filter(equip => equip.email === user.email);
+  const filterEquipment = equipment.filter((equip) => equip.email === user.email);
 
   const handleDelete = (_id) => {
     Swal.fire({
@@ -18,58 +19,69 @@ const MyEquipment = () => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
+      confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-
         fetch(`https://champion-choice-server.vercel.app/addEquipment/${_id}`, {
-          method: 'DELETE'
+          method: "DELETE",
         })
-        .then(res => res.json())
-        .then(data => {
-          if (data.deletedCount > 0) {
-       
-            setEquipment(prevEquipment => prevEquipment.filter(equip => equip._id !== _id));
-            Swal.fire(
-              "Deleted!",
-              "Your equipment has been deleted.",
-              "success"
-            );
-          }
-        });
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              setEquipment((prevEquipment) => prevEquipment.filter((equip) => equip._id !== _id));
+              Swal.fire("Deleted!", "Your equipment has been deleted.", "success");
+            }
+          });
       }
     });
   };
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold text-center my-6">My Equipment</h1>
-
-      <div className="lg:w-10/12 mx-auto w-full py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {
-          filterEquipment.map(equip => (
-            <div key={equip._id} className="card bg-base-100 w-full">
-              <figure>
-                <img
-                  className="w-full h-52 object-cover"
-                  src={equip.photo}
-                  alt={equip.itemName} />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">{equip.itemName}</h2>
-                <p><strong>Category:</strong> {equip.category}</p>
-                <p><strong>Description:</strong> {equip.description}</p>
-                <p><strong>Price:</strong> ${equip.price}</p>
-                <p><strong>Rating:</strong> {equip.rating}</p>
-                <p><strong>Time:</strong> {equip.time} days</p>
-                <div className="card-actions">
-                  <Link to={`/update/${equip._id}`}><button className="btn btn-primary">Edit</button></Link>
-                  <button className="btn btn-primary" onClick={() => handleDelete(equip._id)}>Delete</button>
-                </div>
+    <div className="pb-24">
+      <h1 className="lg:w-9/12 mx-auto text-2xl font-semibold py-6">My Equipment</h1>
+      <div className="lg:w-9/12 px-2 mx-auto w-full py- grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {filterEquipment.map((equip) => (
+          <div key={equip._id} className="bg-white overflow-hidden hover:shadow-lg transition-shadow">
+            <figure>
+              <img
+                className="w-full h-52 object-cover"
+                src={equip.photo}
+                alt={equip.itemName}
+              />
+            </figure>
+            <div className="p-4 space-y-2">
+              <h2 className="text-lg font-semibold text-gray-800">{equip.itemName}</h2>
+              <p className="text-sm text-gray-600">
+                <strong>Category:</strong> {equip.category}
+              </p>
+              <p className="text-sm text-gray-600 line-clamp-2">
+                <strong>Description:</strong> {equip.description}
+              </p>
+              <p className="text-sm text-gray-600">
+                <strong>Price:</strong> ${equip.price}
+              </p>
+              <p className="text-sm text-gray-600">
+                <strong>Rating:</strong> {equip.rating}
+              </p>
+              <p className="text-sm text-gray-600">
+                <strong>Delivery Time:</strong> {equip.time} days
+              </p>
+              <div className="flex justify-between items-center mt-4">
+                <Link to={`/update/${equip._id}`}>
+                  <button className="flex items-center gap-2 bg-blue-500 text-white px-3 py-1 rounded-md text-sm hover:bg-blue-600">
+                    <FaEdit /> Edit
+                  </button>
+                </Link>
+                <button
+                  onClick={() => handleDelete(equip._id)}
+                  className="flex items-center gap-2 bg-red-500 text-white px-3 py-1 rounded-md text-sm hover:bg-red-600"
+                >
+                  <FaTrash /> Delete
+                </button>
               </div>
             </div>
-          ))
-        }
+          </div>
+        ))}
       </div>
     </div>
   );

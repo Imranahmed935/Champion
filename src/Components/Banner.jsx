@@ -21,7 +21,8 @@ const Banner = () => {
     }, [images.length]);
 
     return (
-        <div className="relative w-full lg:w-9/12 py-4 mx-auto overflow-hidden px-2">
+       <div className='bg-[#e3e6e6]'>
+         <div className="relative lg:w-9/12 mx-auto overflow-hidden px-2">
             <div className="relative w-full h-[600px]">
                 {images.map((image, index) => (
                     <Slide
@@ -36,7 +37,7 @@ const Banner = () => {
                             <img
                                 src={image.src}
                                 alt={image.title}
-                                className="object-cover w-full h-[600px]"
+                                className="object-cover  rounded w-full h-[600px]"
                             />
                             <div className="absolute bottom-10 text-center bg-black bg-opacity-50 px-4 py-2 rounded-md max-w-[90%] mx-auto">
                                 <h2 className="text-3xl font-semibold text-white">{image.title}</h2>
@@ -47,6 +48,7 @@ const Banner = () => {
                 ))}
             </div>
         </div>
+       </div>
     );
 };
 

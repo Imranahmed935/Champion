@@ -10,17 +10,24 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@egjs/flicking-plugins": "^4.7.1",
+    "@egjs/react-flicking": "^4.12.0",
     "firebase": "^11.0.2",
     "localforage": "^1.10.0",
     "match-sorter": "^8.0.0",
     "react": "^18.3.1",
     "react-awesome-reveal": "^4.2.14",
     "react-dom": "^18.3.1",
+    "react-fast-marquee": "^1.6.5",
     "react-icons": "^5.4.0",
+    "react-medium-image-zoom": "^5.2.13",
     "react-router-dom": "^7.0.2",
+    "react-slick": "^0.30.3",
     "react-tooltip": "^5.28.0",
+    "slick-carousel": "^1.8.1",
     "sort-by": "^1.2.0",
-    "sweetalert2": "^11.14.5"
+    "sweetalert2": "^11.14.5",
+    "swiper": "^11.2.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",

@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.slick-slide > div{
+    margin:4px;
+}
+body{
+    background-color:#e3e6e6;
+}
+  
+.group:hover .group-hover\:scale-110 {
+    transform: scale(1.1);
+  }

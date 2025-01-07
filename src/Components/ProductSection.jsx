@@ -1,44 +1,57 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-
+import React, { useEffect, useState } from "react";
+import { FaArrowRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const ProductSection = () => {
-    const [products, setProducts] = useState([]);
-    useEffect(() => {
-        fetch('https://champion-choice-server.vercel.app/equipment') 
-            .then((response) => response.json())
-            .then((data) => setProducts(data))
-            .catch((error) => console.error('Error fetching products:', error));
-    }, []);
+  const [products, setProducts] = useState([]);
 
-    return (
-        <div className="container mx-auto px-4 py-8">
-            <h1 className="text-3xl font-bold text-center mb-6">Our Products</h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {products.map((product) => (
-                    <div
-                        key={product._id}
-                        className="border border-gray-200 rounded-lg p-4 shadow-md"
-                    >
-                        <img
-                            src={product.photo}
-                            alt={product.name}
-                            className="w-full h-56 object-cover rounded-md mb-4 shadow-lg"
-                        />
+  useEffect(() => {
+    fetch("http://localhost:5000/equipment")
+      .then((response) => response.json())
+      .then((data) => setProducts(data))
+      .catch((error) => console.error("Error fetching products:", error));
+  }, []);
 
-                        <h2 className="text-xl font-semibold mb-2">{product.itemName}</h2>
-                        <p className="text-gray-600 mb-4">{product.description}</p>
-                        <p className="text-lg font-bold text-purple-600">${product.price}</p>
-                        <Link to={`/details/${product._id}`}>
-                        <button className="mt-4 px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700">
-                            view details
-                        </button>
-                        </Link>
-                    </div>
-                ))}
+  return (
+    <div className="bg-[#e3e6e6]">
+        <div className="lg:w-9/12 mx-auto px-4  ">
+      <h1 className="text-2xl font-semibold py-4">Best Sellers in Sports</h1>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {products.map((product) => (
+          <div
+            key={product._id}
+            className="bg-white border border-gray-200 shadow-md"
+          >
+            {/* Product Image */}
+            <div className="relative">
+              <img
+                src={product.photo}
+                alt={product.itemName}
+                className="w-full h-40 object-cover rounded-t-lg"
+              />
             </div>
-        </div>
-    );
+
+            {/* Product Info */}
+            <div className="p-4">
+              <h2 className="text-lg font-semibold truncate mb-2">{product.itemName}</h2>
+              <p className="text-lg text-gray-600">${product.price}</p>
+            </div>
+
+            {/* Details Button */}
+            <div className="flex justify-end items-center p-4">
+              <Link
+                to={`/details/${product._id}`}
+                className=" flex items-center text-purple-600 hover:text-purple-800 transition duration-300"
+              >
+                <FaArrowRight/>
+              </Link>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+    </div>
+  );
 };
 
 export default ProductSection;
