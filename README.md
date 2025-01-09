@@ -12,11 +12,12 @@ Champion is an innovative platform designed for sports enthusiasts, enabling the
 
 ## Key Features
 
-- **Comprehensive Player Profiles**: Access in-depth statistics, achievements, and performance data of top players.
-- **Team Building Tools**: Effortlessly create and manage your dream team with intuitive customization options.
-- **Live Match Insights**: Stay informed with real-time updates on live match scores, highlights, and key moments.
-- **Community Engagement**: Interact with fellow enthusiasts via forums and discussions, sharing insights and opinions.
-- **Mobile Optimization**: Enjoy a responsive and user-friendly experience on any device, from desktop to mobile.
+- **Comprehensive Equipment Management**: Add, update, delete, and manage your sports equipment effortlessly.  
+- **Seamless Purchasing**: Browse and purchase sports equipment with a user-friendly interface and secure payment options.  
+- **Advanced Search Functionality**: Quickly find the equipment you need with powerful search and filtering tools.  
+- **Real-Time Updates**: Stay informed with live updates on equipment availability and new product launches.  
+- **Community Engagement**: Connect with other sports enthusiasts, share insights, and exchange recommendations through interactive forums.  
+- **Mobile-Friendly Design**: Enjoy a fully optimized, responsive experience across all devices, from desktops to smartphones.  
 
 ---
 
