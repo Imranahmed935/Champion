@@ -6,7 +6,7 @@
 
 ## Overview
 
-Champion's Choice is a comprehensive platform designed for sports enthusiasts, offering an array of tools and features for team management, player insights, and live match tracking. Whether you're building your dream team, exploring detailed player profiles, or staying updated with live scores, Champion's Choice provides a seamless and engaging experience for users on all devices.
+Champion is an innovative platform designed for sports enthusiasts, enabling them to add, purchase, update, delete, and search for equipment seamlessly, along with a host of other features to enhance their experience.
 
 ---
 
